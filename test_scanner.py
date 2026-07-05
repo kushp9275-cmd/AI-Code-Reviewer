@@ -17,7 +17,7 @@ def run_offline_validation_test():
         {
           "title": "SQL Injection",
           "severity": "High",
-          "line_number": 15,
+          "line_number": "15",
           "description": "User input is directly concatenated into a SQL statement, allowing arbitrary database commands.",
           "vulnerable_code": "query = f\\\"SELECT * FROM users WHERE username = '{username}'\\\"",
           "secure_fix": "query = \\\"SELECT * FROM users WHERE username = ?\\\"; cursor.execute(query, (username,))"
