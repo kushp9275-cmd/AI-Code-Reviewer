@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="h-screen w-screen overflow-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIELD.AI // Login</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS link -->
+    <link rel="stylesheet" href="/frontend/styles.css">
+</head>
+<body class="h-screen w-screen overflow-hidden bg-[#0B0F19] text-[#A0AEC0] flex items-center justify-center font-sans relative select-none antialiased">
+    
+    <!-- Giant Background Shield Outline -->
+    <div class="absolute inset-0 flex items-center justify-center z-0 opacity-[0.04] pointer-events-none">
+        <svg width="600" height="600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="text-white">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+    </div>
+
+    <!-- Glowing Radial Spots behind the card -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-[70%] -translate-y-[70%] w-80 h-80 bg-[#00F0FF]/15 rounded-full blur-[100px] pointer-events-none z-0"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-[30%] -translate-y-[30%] w-80 h-80 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none z-0"></div>
+
+    <!-- Glassmorphism Login Card -->
+    <div class="w-full max-w-[380px] bg-[#131B2E]/60 border border-[#233554]/50 rounded-2xl p-8 backdrop-blur-md shadow-2xl relative z-10">
+        
+        <!-- Logo and Header -->
+        <div class="flex flex-col items-center text-center mb-6">
+            <div class="p-1.5 bg-[#00F0FF]/5 border border-[#00F0FF]/25 rounded-2xl shadow-[0_0_12px_rgba(0,240,255,0.15)] mb-3 flex items-center justify-center w-14 h-14 overflow-hidden">
+                <img src="/frontend/logo.svg" class="w-full h-full object-contain" alt="Shield Logo">
+            </div>
+            <h1 class="font-mono text-lg tracking-widest font-extrabold text-[#00F0FF]">SHIELD.AI</h1>
+            <p class="font-mono text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">// Code Reviewer</p>
+            
+            <h2 class="text-base font-extrabold text-white mt-5">Welcome Back</h2>
+            <p class="text-[10px] text-slate-500 mt-1">Login to your Secure Code Review account.</p>
+        </div>
+        
+        <!-- Login Form -->
+        <form id="login-form" class="space-y-4">
+            
+            <!-- Email Input -->
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </span>
+                <input type="email" id="login-email" required class="w-full bg-[#070A13]/80 border border-[#233554]/50 hover:border-[#00F0FF]/30 focus:border-[#00F0FF] rounded-lg py-2.5 pl-10 pr-4 text-xs font-medium text-slate-200 focus:outline-none transition-all placeholder:text-slate-600 focus:ring-1 focus:ring-[#00F0FF]/20" placeholder="Email">
+            </div>
+            
+            <!-- Password Input -->
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-500">
+                        <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+                    </svg>
+                </span>
+                <input type="password" id="login-password" required class="w-full bg-[#070A13]/80 border border-[#233554]/50 hover:border-[#00F0FF]/30 focus:border-[#00F0FF] rounded-lg py-2.5 pl-10 pr-4 text-xs font-medium text-slate-200 focus:outline-none transition-all placeholder:text-slate-600 focus:ring-1 focus:ring-[#00F0FF]/20" placeholder="Password">
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-[#00F0FF] text-[#0B0F19] font-bold py-3 rounded-lg shadow-lg hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] active:scale-[0.99] transition-all text-xs uppercase tracking-widest font-mono flex items-center justify-center gap-2 cursor-pointer mt-5">
+                [ Sign In Securely ]
+            </button>
+        </form>
+        
+        <!-- Links footer -->
+        <div class="flex flex-col items-center gap-2 mt-5 text-[10px] font-medium tracking-wide">
+            <a href="#" class="text-slate-500 hover:text-slate-300 transition-colors">Forgot Password?</a>
+            <p class="text-slate-600">Don't have an account? <a href="/signup" class="text-[#00F0FF] hover:underline">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Auth script -->
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            
+            // Allow any login structure (mock credentials or simple validation)
+            if (email && password) {
+                // Set session
+                sessionStorage.setItem('shield_session', 'Kartavya Patel');
+                sessionStorage.setItem('shield_email', email);
+                
+                // Redirect to dashboard
+                window.location.href = '/';
+            } else {
+                alert("Please enter a valid email and password.");
+            }
+        });
+
+        // Redirect if session is already active
+        if (sessionStorage.getItem('shield_session')) {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
