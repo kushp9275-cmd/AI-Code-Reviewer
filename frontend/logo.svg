@@ -1,0 +1,52 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cyan to Purple linear gradient -->
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="60%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer Shield Outline -->
+  <path d="M50 10 L82 22 V50 C82 71 50 88 50 88 C50 88 18 71 18 50 V22 L50 10 Z" 
+        stroke="url(#shield-grad)" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round" />
+        
+  <!-- Inner Shield Outline (dashed, thinner) -->
+  <path d="M50 17 L75 26 V50 C75 66 50 79 50 79 C50 79 25 66 25 50 V26 L50 17 Z" 
+        stroke="url(#shield-grad)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5" />
+
+  <!-- Center Core Processor -->
+  <rect x="44" y="44" width="12" height="12" rx="2" fill="none" stroke="url(#shield-grad)" stroke-width="2.5" />
+  <circle cx="50" cy="50" r="2.5" fill="url(#shield-grad)" />
+
+  <!-- Circuit traces and nodes (Left Column) -->
+  <!-- Trace 1 (Middle-horizontal) -->
+  <path d="M44 50 H33 L27 44" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="27" cy="44" r="3.5" fill="url(#shield-grad)" />
+  <!-- Trace 2 (Top-diagonal) -->
+  <path d="M44 47 L35 38 H29" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="29" cy="38" r="3.5" fill="url(#shield-grad)" />
+  <!-- Trace 3 (Bottom-diagonal) -->
+  <path d="M46 55 L37 64 H31" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="31" cy="64" r="3.5" fill="url(#shield-grad)" />
+
+  <!-- Circuit traces and nodes (Right Column) -->
+  <!-- Trace 1 (Middle-horizontal) -->
+  <path d="M56 50 H67 L73 44" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="73" cy="44" r="3.5" fill="url(#shield-grad)" />
+  <!-- Trace 2 (Top-diagonal) -->
+  <path d="M56 47 L65 38 H71" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="71" cy="38" r="3.5" fill="url(#shield-grad)" />
+  <!-- Trace 3 (Bottom-diagonal) -->
+  <path d="M54 55 L65 64 H71" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="71" cy="64" r="3.5" fill="url(#shield-grad)" />
+
+  <!-- Vertical top/bottom traces -->
+  <!-- Top Trace -->
+  <path d="M50 44 V30" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" />
+  <circle cx="50" cy="30" r="3.5" fill="url(#shield-grad)" />
+  <!-- Bottom Trace -->
+  <path d="M50 56 V72" stroke="url(#shield-grad)" stroke-width="2" stroke-linecap="round" />
+  <circle cx="50" cy="72" r="3.5" fill="url(#shield-grad)" />
+</svg>
