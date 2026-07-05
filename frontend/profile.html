@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="h-screen w-screen overflow-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIELD.AI // Profile</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS link -->
+    <link rel="stylesheet" href="/frontend/styles.css">
+    <!-- Auth check before render -->
+    <script>
+        if (!sessionStorage.getItem('shield_session')) {
+            window.location.href = '/login';
+        }
+    </script>
+</head>
+<body class="h-screen w-screen overflow-hidden flex bg-[#0B0F19] text-[#A0AEC0] font-sans antialiased relative">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-[#0A0D16] border-r border-[#233554]/50 flex flex-col justify-between p-6 shrink-0 z-20">
+        <div class="space-y-8">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="p-1 bg-[#00F0FF]/5 border border-[#00F0FF]/25 rounded-lg flex items-center justify-center w-7 h-7 overflow-hidden">
+                    <img src="/frontend/logo.svg" class="w-full h-full object-contain" alt="Shield Logo">
+                </div>
+                <div class="font-mono text-sm tracking-widest font-extrabold text-[#00F0FF]">
+                    SHIELD.AI <span class="text-slate-500 font-bold block text-[10px] uppercase tracking-wider mt-0.5">// Code Reviewer</span>
+                </div>
+            </div>
+            
+            <!-- Menu Links -->
+            <nav class="space-y-2">
+                <a href="/?view=overview" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Overview
+                </a>
+                <a href="/?view=scan-history" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    Scan History
+                </a>
+                <a href="/?view=vuln-db" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    Vulnerability Database
+                </a>
+                <a href="/?view=integrations" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    Integrations
+                </a>
+                <a href="/?view=settings" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shrink-0">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                    Settings
+                </a>
+                <a href="/profile" class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-[#00F0FF] text-[#0B0F19] transition-all text-xs font-bold shadow-[0_0_12px_rgba(0,240,255,0.2)]">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="shrink-0 text-[#0B0F19]">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Profile
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Footer info -->
+        <div class="text-[10px] font-mono tracking-wider text-slate-500 uppercase">
+            SHIELD.AI // kartavyapatel
+        </div>
+    </aside>
+
+    <!-- Main Profile Workspace -->
+    <div class="flex-1 flex flex-col overflow-hidden h-full">
+        
+        <!-- Top bar Header -->
+        <header class="h-14 bg-[#0D1424]/40 border-b border-[#233554]/50 px-8 flex items-center justify-between shrink-0">
+            <h1 class="text-slate-100 font-extrabold tracking-tight text-base font-mono uppercase">Profile Dashboard</h1>
+            
+            <div class="flex items-center gap-4">
+                <button class="p-1.5 hover:bg-[#1b253b]/60 text-slate-400 hover:text-slate-200 rounded-lg transition-colors" id="logout-btn" title="Sign Out">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-purple-600 text-white font-bold flex items-center justify-center text-xs shadow-[0_0_8px_rgba(147,51,234,0.3)]">K</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Profile Dashboard Main Panel (Centered Single-Column Layout) -->
+        <main class="flex-1 overflow-y-auto p-8 flex justify-center items-start">
+            
+            <div class="w-full max-w-2xl flex flex-col gap-6">
+                
+                <!-- 1. Profile Status -->
+                <div class="bg-[#131B2E]/60 border border-[#233554]/50 rounded-2xl p-6 backdrop-blur-md shadow-lg flex flex-col relative overflow-hidden group">
+                    <div class="flex items-center gap-5 border-b border-[#233554]/30 pb-5 mb-5">
+                        <!-- Big Initial circular photo -->
+                        <div class="w-16 h-16 rounded-full bg-purple-600 border border-purple-500/30 flex items-center justify-center text-2xl font-extrabold text-white shadow-[0_0_15px_rgba(147,51,234,0.3)] shrink-0">
+                            K
+                        </div>
+                        <div>
+                            <h2 class="text-base font-extrabold text-slate-100" id="profile-name">Kartavya Patel</h2>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Badges -->
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-[#070A13]/60 border border-[#233554]/30 rounded-xl p-3 text-center">
+                            <div class="text-slate-100 font-mono font-extrabold text-sm" id="scans-count">1,280</div>
+                            <div class="text-[8px] font-mono tracking-wider font-bold uppercase text-slate-500 mt-1">Total Scans</div>
+                        </div>
+                        <div class="bg-[#070A13]/60 border border-[#233554]/30 rounded-xl p-3 text-center">
+                            <div class="text-amber-400 font-mono font-extrabold text-sm" id="flaws-count">42 <span class="text-amber-500/80 text-[10px] font-bold">↑</span></div>
+                            <div class="text-[8px] font-mono tracking-wider font-bold uppercase text-slate-500 mt-1">Flaws Patched</div>
+                        </div>
+                        <div class="bg-[#070A13]/60 border border-[#233554]/30 rounded-xl p-3 text-center">
+                            <div class="text-emerald-400 font-mono font-extrabold text-sm" id="efficiency-rate">94.5%</div>
+                            <div class="text-[8px] font-mono tracking-wider font-bold uppercase text-slate-500 mt-1">Efficiency</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. User Details -->
+                <div class="bg-[#131B2E]/60 border border-[#233554]/50 rounded-2xl p-6 backdrop-blur-md shadow-lg">
+                    <h3 class="text-xs tracking-widest font-mono font-extrabold uppercase text-slate-300 border-b border-[#233554]/30 pb-3 mb-4">User Details</h3>
+                    
+                    <div class="space-y-4 text-xs">
+                        <div class="flex border-b border-[#233554]/20 pb-2.5">
+                            <span class="w-32 text-slate-500 font-semibold shrink-0">Full Name</span>
+                            <span class="text-slate-300 font-medium" id="profile-name-detail">Kartavya Patel</span>
+                        </div>
+                        <div class="flex pb-1">
+                            <span class="w-32 text-slate-500 font-semibold shrink-0">Email Address</span>
+                            <span class="text-slate-300 font-mono" id="profile-email">kushp29275@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </main>
+    </div>
+    
+    <!-- Session & Logout script -->
+    <script>
+        // Check active session
+        const sessionName = sessionStorage.getItem('shield_session');
+        const sessionEmail = sessionStorage.getItem('shield_email');
+        const isNewUser = sessionEmail && sessionEmail.trim().toLowerCase() !== 'admin@shield.ai';
+
+        if (sessionName) {
+            document.getElementById('profile-name').textContent = sessionName;
+            document.getElementById('profile-name-detail').textContent = sessionName;
+            
+            // Set profile badge (first letter of name)
+            const badges = document.querySelectorAll('.rounded-full');
+            badges.forEach(badge => {
+                if (badge.classList.contains('bg-purple-600')) {
+                    badge.textContent = sessionName.charAt(0).toUpperCase();
+                }
+            });
+        }
+        if (sessionEmail) {
+            document.getElementById('profile-email').textContent = sessionEmail;
+        }
+
+        // Dynamically adjust statistics based on user type
+        if (isNewUser) {
+            const scans = localStorage.getItem('shield_scan_count') || '0';
+            const flaws = localStorage.getItem('shield_flaws_count') || '0';
+            const efficiency = parseInt(scans, 10) > 0 ? '94.5%' : '0.0%';
+
+            document.getElementById('scans-count').textContent = scans;
+            document.getElementById('flaws-count').innerHTML = `${flaws} <span class="text-amber-500/80 text-[10px] font-bold">↑</span>`;
+            document.getElementById('efficiency-rate').textContent = efficiency;
+        }
+
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            sessionStorage.removeItem('shield_session');
+            sessionStorage.removeItem('shield_email');
+            sessionStorage.removeItem('shield_is_new_user');
+            window.location.href = '/login';
+        });
+    </script>
+</body>
+</html>
