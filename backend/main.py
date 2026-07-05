@@ -116,6 +116,30 @@ def get_status():
         "provider": "Google Gemini"
     }
 
+# Serve the login.html file
+@app.get("/login")
+def read_login():
+    login_path = os.path.join("frontend", "login.html")
+    if os.path.exists(login_path):
+        return FileResponse(login_path)
+    return {"message": "Login page not found."}
+
+# Serve the profile.html file
+@app.get("/profile")
+def read_profile():
+    profile_path = os.path.join("frontend", "profile.html")
+    if os.path.exists(profile_path):
+        return FileResponse(profile_path)
+    return {"message": "Profile page not found."}
+
+# Serve the signup.html file
+@app.get("/signup")
+def read_signup():
+    signup_path = os.path.join("frontend", "signup.html")
+    if os.path.exists(signup_path):
+        return FileResponse(signup_path)
+    return {"message": "Signup page not found."}
+
 # Serve the index.html file on root
 @app.get("/")
 def read_root():
